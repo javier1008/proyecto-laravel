@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Casilla;
+
 
 class CasillaController extends Controller
 {
@@ -13,7 +15,8 @@ class CasillaController extends Controller
      */
     public function index()
     {
-      echo "put here logical for method index";   
+        $casillas = Casilla::all();
+        return view('casilla/list', compact('casillas'));
     }
 
     /**
@@ -23,7 +26,7 @@ class CasillaController extends Controller
      */
     public function create()
     {
-        //
+        return view('casilla/create');
     }
 
     /**
@@ -34,7 +37,7 @@ class CasillaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        print_r($request->all());
     }
 
     /**
@@ -45,7 +48,7 @@ class CasillaController extends Controller
      */
     public function show($id)
     {
-        //
+        echo "Element $id"; /// "Element " . $id
     }
 
     /**
@@ -56,7 +59,7 @@ class CasillaController extends Controller
      */
     public function edit($id)
     {
-        //
+        echo "Element $id to Edit";
     }
 
     /**
@@ -68,7 +71,7 @@ class CasillaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        echo "Element $id updated";
     }
 
     /**
@@ -79,6 +82,6 @@ class CasillaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        echo "Element $id has deleted";
     }
 }
