@@ -16,7 +16,7 @@
     <header>
         <div class="row">
             <div class="col-md-2">
-                <img src="/tecnm_sintexto.svg" width="200px">
+                <img src="https://tecmonclova.com/sitio/wp-content/uploads/2019/08/cropped-iconoweb.png" width="200px">
             </div>
             <div class="col-md-8 text-center">
                 <h1>Instituto Tecnológico del Valle de Oaxaca</h1>
