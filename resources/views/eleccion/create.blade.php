@@ -23,39 +23,39 @@
         enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="form-group">
-                <label for="ubicacion">Periodo:</label>
-                <input type="text" id="ubicacion"
-                 class="form-control" name="ubicacion" />
+                <label for="periodo">periodo:</label>
+                <input type="Text" id="periodo"
+                 class="form-control" name="periodo" />
             </div>
             <div class="form-group">
                 <label for="ubicacion">Fecha:</label>
-                <input type="date" id="ubicacion"
-                 class="form-control" name="ubicacion" />
+                <input type="date" id="fecha"
+                 class="form-control" name="fecha" />
             </div>
             <div class="form-group">
                 <label for="ubicacion">Fecha Apertura:</label>
-                <input type="date" id="ubicacion"
-                 class="form-control" name="ubicacion" />
+                <input type="date" id="fechaapertura"
+                 class="form-control" name="fechaapertura" />
             </div>
             <div class="form-group">
                 <label for="ubicacion">Hora de Apertura:</label>
-                <input type="time" id="ubicacion"
-                 class="form-control" name="ubicacion" />
+                <input type="time" id="horaapertura"
+                 class="form-control" name="horaapertura" />
             </div>
             <div class="form-group">
                 <label for="ubicacion">Fecha de cierre:</label>
-                <input type="date" id="ubicacion"
-                 class="form-control" name="ubicacion" />
+                <input type="date" id="fechacierre"
+                 class="form-control" name="fechacierre" />
             </div>
             <div class="form-group">
                 <label for="ubicacion">Hora de cierre:</label>
-                <input type="time" id="ubicacion"
-                 class="form-control" name="ubicacion" />
+                <input type="time" id="horacierre"
+                 class="form-control" name="horacierre" />
             </div>
             <div class="form-group">
                 <label for="ubicacion">Observaciones:</label>
-                <input type="Text" id="ubicacion"
-                 class="form-control" name="ubicacion" />
+                <input type="Text" id="observaciones"
+                 class="form-control" name="observaciones" />
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>

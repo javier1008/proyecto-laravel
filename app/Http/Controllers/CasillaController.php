@@ -88,7 +88,7 @@ class CasillaController extends Controller
     {
         $this->validateData($request);
         $data['ubicacion']= $request->ubicacion;
-        Casilla::whereId($id)->update($data);
+        Casilla::whereId($id)->update($data);//reducción de consulta por elocuent
         return redirect('casilla')
         ->with('success', 'Actualizado correctamente...');
     }
