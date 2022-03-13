@@ -70,7 +70,7 @@ class EleccionController extends Controller
      */
     public function show($id)
     {
-        //
+        echo "Element $id";//
     }
 
     /**
@@ -81,7 +81,7 @@ class EleccionController extends Controller
      */
     public function edit($id)
     {
-        $candidato = Eleccion::find($id);
+        $eleccion = Eleccion::find($id);
         return view ('eleccion/edit', compact('eleccion')); 
     }
 
@@ -117,6 +117,7 @@ class EleccionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Eleccion::whereId($id)->delete();
+        return redirect('eleccion');
     }
 }

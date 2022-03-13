@@ -19,16 +19,44 @@
             </ul>
         </div><br />
         @endif
-        <form method="POST" action="{{ route('casilla.update', $casilla->id) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('eleccion.update', $eleccion->id) }}" enctype="multipart/form-data">
             {{ csrf_field() }}
             @method('PUT')
             <div class="form-group">
                 <label for="id">ID:</label>
-                <input type="text" class="form-control" readonly="true" value="{{$casilla->id}}" name="id" />
+                <input type="text" class="form-control" readonly="true" value="{{$eleccion->id}}" name="id" />
             </div>
             <div class="form-group">
-                <label for="descripcion">Ubicación:</label>
-                <input type="text" value="{{$casilla->ubicacion}}" class="form-control" name="ubicacion" />
+                <label for="descripcion">Periodo:</label>
+                <input type="text" value="{{$eleccion->periodo}}" class="form-control" name="periodo" />
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Fecha:</label>
+                
+                <input type="date" value= {{$eleccion->fecha}} class="form-control" name="fecha" />
+                
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Fecha de apertura:</label>
+                <input type="date" value={{$eleccion->fechaapertura}} class="form-control" name="fechaapertura" />
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Hora de Apertura:</label>
+                <input type="time" value={{$eleccion->horaapertura->format('H:i')}} class="form-control" name="horaapertura" />
+            </div>
+         
+            <div class="form-group">
+                <label for="descripcion">Fecha de Cierre:</label>
+                <input type="date" value={{$eleccion->fechacierre}} class="form-control" name="fechacierre" />
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Hora de Cierre:</label>
+                <input type="time" value={{$eleccion->horacierre->format('H:i')}} class="form-control" name="horacierre" />
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Observaciones:</label>
+                <input type="text" value="{{$eleccion->observaciones}}" class="form-control" name="observaciones" />
             </div>
             <button type="submit" class="btn btn-primary">Guardar cambios</button>
         </form>
