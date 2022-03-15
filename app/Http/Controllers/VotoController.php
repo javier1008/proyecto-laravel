@@ -8,7 +8,7 @@ use App\Models\Casilla;
 use App\Models\Eleccion;
 use App\Models\Voto;
 use App\Models\Votocandidato;
-
+use Illuminate\Support\Facades\DB;
 
 class VotoController extends Controller
 {
@@ -34,7 +34,15 @@ class VotoController extends Controller
         $elecciones = Eleccion::all();
         return view('voto/create',compact('casillas','candidatos','elecciones'));
     }
-
+    private function validateVote($request){
+        foreach($request->all() as $key=>$value){
+            if(substr($key,0,10)=="candidato_")
+            if($value<0){
+                return false;
+            }
+        }
+        return true;
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -43,37 +51,47 @@ class VotoController extends Controller
      */
     public function store(Request $request)
     {
-       
-        $candidatos=[];
-        foreach($request->all() as $k=>$v){
-           
-            if (substr($k,0,10)=="candidato_")
-                $candidatos[substr($k,10)]=$v;
-        }
+            if(!($this->validateVote($request))){
+                return "Los votos no pueden ser negativos";
+            }   
+            $candidatos=[];
+            foreach($request->all() as $key=>$value){
+                if (substr($key,0,10)=="candidato_")
+                    $candidatos[substr($key,10)]=$value;
+            }
 
-  
-        $data['eleccion_id']=$request->eleccion_id;
-        $data['casilla_id']=$request->casilla_id;
-        $evidenceFileName ="";
-        if ($request->hasFile('evidencia')) {
-            $evidenceFileName = $request->file('evidencia')->getClientOriginalName();
-        }
-        if ($request->hasFile('evidencia')) $request->file('evidencia')->move(public_path('pdf'), $evidenceFileName);
+    
+            $data['eleccion_id']=$request->eleccion_id;
+            $data['casilla_id']=$request->casilla_id;
+            $evidenceFileName ="";
+            if ($request->hasFile('evidencia')) {
+                $evidenceFileName = $request->file('evidencia')->getClientOriginalName();
+            }
+            if ($request->hasFile('evidencia')) $request->file('evidencia')->move(public_path('pdf'), $evidenceFileName);
 
-        $data['evidencia']=$evidenceFileName;
+            $data['evidencia']=$evidenceFileName;
+            $success=false;
+            $message="save sucessfull";
+            DB::beginTransaction();
+            try {
+                $voto =Voto::create($data);
+    
+                //--- save to votocandidato
+                foreach($candidatos as $key=>$value){
+                    $votocandidato=[];
+                    $votocandidato['voto_id']= $voto->id;
+                    $votocandidato['candidato_id'] = $key;
+                    $votocandidato['votos']=$value;
+                    Votocandidato::create($votocandidato);
+                }
+                DB::commit();
+                $success=true;
+            } catch (\Exception $e) {
+                DB::rollback();
+                $message=$e->getMessage();
+            }
         
-        $voto =Voto::create($data);
-        print("ID: ". $voto->id);
-
-        //--- save to votocandidato
-        foreach($candidatos as $k=>$v){
-            $votocandidato=[];
-            $votocandidato['voto_id']= $voto->id;
-            $votocandidato['candidato_id'] = $k;
-            $votocandidato['votos']=$v;
-            Votocandidato::create($votocandidato);
-        }
-        echo "Guardado ....";
+        echo $message;
         
     }  
 
