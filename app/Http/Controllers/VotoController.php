@@ -19,7 +19,8 @@ class VotoController extends Controller
      */
     public function index()
     {
-
+        $votos = Voto::all();
+        return view('voto/list', compact('votos'));
     }
 
     /**
