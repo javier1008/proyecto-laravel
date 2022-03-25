@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\DB;
 
 class VotoController extends Controller
 {
+    Private $DUPLICATE_KEY_CODE=23000;
+    PRIVATE $DUPLICATE_KEY_MESSAGE="Ya existe un dato igual en la base de datos,".
+    "No se permiten duplicados";
     /**
      * Display a listing of the resource.
      *
@@ -89,10 +92,13 @@ class VotoController extends Controller
                 $success=true;
             } catch (\Exception $e) {
                 DB::rollback();
+                if($e->getCode()==$this->DUPLICATE_KEY_CODE)
+                    $message=$this->DUPLICATE_KEY_MESSAGE;
+                else    
                 $message=$e->getMessage();
             }
         
-        echo $message;
+        return view('message',compact('message','success'));
         
     }  
 
@@ -138,6 +144,20 @@ class VotoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::beginTransaction();
+        $success=true;
+        try{
+        Votocandidato::where('voto_id','m',$id)->delete();
+        Voto::whereId($id)->delete();
+        DB::commit();
+        $message="Operacion exitosa";    
+        }
+        catch(\Exception $ex){
+            DB::rollBack();
+            $message=$ex->getMessage();
+            $success=false;
+
+        }
+        return view ('message', compact('message','success'));
     }
 }
