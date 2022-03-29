@@ -13,7 +13,8 @@
         <tr>
             <td>voto</td>
             <td>casilla</td>
-            <td>Candidatos y votos</td>
+            <td>Candidatos y Votos</td>
+            <td>evidencia</td>
             <td colspan="2">ACTION</td>
         </tr>
     </thead>
@@ -30,11 +31,23 @@
                         <td><input type="text" readonly 
                         value="{{$candidato->pivot->votos}}"
                         name="candidato_{{$candidato->id}}"  > </td>
+                        @endforeach
                     </tr>
-                @endforeach
                 </table>
+                <td><a href="pdf/{{$voto->evidencia}}">x</td>
+
             </td>
-            <td></td>
+            <td><a href="{{ route('voto.edit', $voto->id)}}"
+                class="btn btn-primary">Edit</a></td>
+                <td>
+                <form action="{{ route('voto.destroy', $voto->id)}}"
+                method="post">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger" type="submit"
+                onclick="return confirm('Esta seguro de borrar {{$voto->id}}')" >Del</button>
+            </form>
+            </td>
             
         </tr>
         @endforeach
