@@ -61,8 +61,8 @@ class CandidatoController extends GenericController
  'perfil' => $perfilcandidato,
  );
 
- if ($request->hasFile('foto')) $foto->move(public_path('img'), $fotocandidato);
- if ($request->hasFile('perfil')) $perfil->move(public_path('img'), $perfilcandidato);
+ if ($request->hasFile('foto')) $foto->move(public_path('image'), $fotocandidato);
+ if ($request->hasFile('perfil')) $perfil->move(public_path('pdf'), $perfilcandidato);
 
  $candidato = Candidato::create($campos);
  $resp = $this->sendResponse($candidato,
@@ -88,9 +88,22 @@ class CandidatoController extends GenericController
  * @param int $id
  * @return \Illuminate\Http\Response
  */
- public function edit($id)
- {
- //
+ public function edit($id){
+
+ $id = intval($id);    
+ $candidato = Candidato::find($id);
+ return $this->send($candidato,$id);
+ }
+
+ private function send($data, $id){
+    if($data){
+        $resp = $this->sendResponse($data,
+        "Recuperado satisfactoriamente....");
+    }
+    else{
+        $resp = $this->sendError("No se encontró el candidato $id");
+    }
+    return ($resp);
  }
  /**
  * Update the specified resource in storage.
@@ -101,7 +114,33 @@ class CandidatoController extends GenericController
  */
  public function update(Request $request, $id)
  {
- //
+    $fotoCandidato = "";
+    $perfilCandidato = "";
+    if ($request->hasFile('foto')) {
+        $foto = $request->file('foto');
+        $fotoCandidato = $foto->getClientOriginalName();
+    }
+    if ($request->hasFile('perfil')) {
+        $perfil = $request->file('perfil');
+        $perfilCandidato = $perfil->getClientOriginalName();
+    }
+
+    $currentValue = Candidato::find($id);
+    if (empty($fotoCandidato)) $fotoCandidato = $currentValue->foto;
+    if (empty($perfilCandidato)) $perfilCandidato = $currentValue->perfil;
+
+    $campos=[
+            'nombrecompleto' => $request->nombrecompleto,
+            'sexo'           => $request->sexo,
+            'foto'           => $fotoCandidato,
+            'perfil'         => $perfilCandidato,
+    ];
+    if ($request->hasFile('foto')) $foto->move(public_path('image'), $fotoCandidato);
+    if ($request->hasFile('perfil')) $perfil->move(public_path('pdf'), $perfilCandidato);
+
+    Candidato::whereId($id)->update($campos);
+    return $this->send($campos,$id);
+
  }
  /**
  * Remove the specified resource from storage.
@@ -111,6 +150,8 @@ class CandidatoController extends GenericController
  */
  public function destroy($id)
  {
- //
+ $candidato = Candidato::find($id);
+ Candidato::whereId($id)->delete();
+ return $this->send($candidato,$id);
  }
 }

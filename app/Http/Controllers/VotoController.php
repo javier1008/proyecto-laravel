@@ -147,8 +147,9 @@ class VotoController extends Controller
             $evidencia = $request->file('evidencia');
             $evidenciaVoto = $evidencia->getClientOriginalName();
         }
-        $currentValue = Voto::find($id);
-        if (empty($evidenciaVoto)) $evidenciaVoto = $currentValue->evidencia;
+        /*$currentValue = Voto::find($id);
+        if (empty($evidenciaVoto)) $evidenciaVoto = $currentValue->evidencia;*/
+        
         
         
     }

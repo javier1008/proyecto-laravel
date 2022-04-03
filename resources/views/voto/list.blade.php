@@ -34,7 +34,7 @@
                         @endforeach
                     </tr>
                 </table>
-                <td><a href="pdf/{{$voto->evidencia}}">x</td>
+                <td><a href="pdf/{{$voto->evidencia}}">perfil</td>
 
             </td>
             <td><a href="{{ route('voto.edit', $voto->id)}}"
