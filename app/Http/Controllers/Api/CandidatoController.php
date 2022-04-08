@@ -32,13 +32,13 @@ class CandidatoController extends GenericController
  * @param \Illuminate\Http\Request $request
  * @return \Illuminate\Http\Response
  */
+
  public function store(Request $request)
  {
  $validacion = Validator::make($request->all(), [
  'nombrecompleto' => 'unique:candidato|required|max:200',
  'sexo' =>'required'
  ]);
-
 
  if ($validacion->fails())
  return $this->sendError("Error de validacion", $validacion->errors());
@@ -114,6 +114,13 @@ class CandidatoController extends GenericController
  */
  public function update(Request $request, $id)
  {
+    $validacion = Validator::make($request->all(), [
+        'nombrecompleto' => 'unique:candidato|required|max:200',
+        'sexo' =>'required'
+        ]);
+        if ($validacion->fails())
+        return $this->sendError("Error de validacion", $validacion->errors());    
+       
     $fotoCandidato = "";
     $perfilCandidato = "";
     if ($request->hasFile('foto')) {
@@ -137,9 +144,11 @@ class CandidatoController extends GenericController
     ];
     if ($request->hasFile('foto')) $foto->move(public_path('image'), $fotoCandidato);
     if ($request->hasFile('perfil')) $perfil->move(public_path('pdf'), $perfilCandidato);
-
+    
+    $candidato = Candidato::find($id);
     Candidato::whereId($id)->update($campos);
-    return $this->send($campos,$id);
+    return $this->send($candidato,$id);
+    
 
  }
  /**
