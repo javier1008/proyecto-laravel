@@ -151,7 +151,6 @@ class VotoController extends Controller
         $candidatos=[];
         foreach($request->all() as $key=>$value){
             if (substr($key,0,10)=="candidato_")
-            print_r($key);
                 $candidatos[substr($key,10)]=$value;
         }
 
