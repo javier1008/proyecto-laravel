@@ -20,7 +20,9 @@ use App\Http\Controllers\VotoController;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::resource('casilla', CasillaController::class);
 Route::resource('candidato',CandidatoController::class);
 Route::resource('eleccion',EleccionController::class);
 Route::resource('voto', VotoController::class);
+//Route::get('form',"App\Http\Controllers\profile")
