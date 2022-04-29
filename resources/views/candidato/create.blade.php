@@ -37,14 +37,32 @@
             <div class="form-group">
                 <label for="foto">Foto:</label>
                 <input type="file" id="foto" accept="image/png, image/jpeg" 
-                 class="form-control" name="foto" />
+                 class="form-control" name="foto" /> <br>
+                 <img style="visibility:hidden"  id="prview" src=""  width=100 height=100 />
             </div>
+            <script>
+            foto.onchange = evt => {
+            const [file] = foto.files
+            if (file) {
+            prview.style.visibility = 'visible';
+            prview.src = URL.createObjectURL(file)
+                    }
+            }
+            </script>
             <div class="form-group">
                 <label for="perfil">Perfil:</label>
                 <input type="file" id="perfil" accept="application/pdf"
                  class="form-control" name="perfil" />
+                 <embed id="vistaPrevia" type="aplication/pdf" width="400" height="400">
             </div>
 
+            <script>
+                document.querySelector('#perfil').addEventListener('change',() =>{
+                    let perfil = document.querySelector('#perfil').files[0];
+                    let  perfilURL = URL.createObjectURL(perfil);
+                    document.querySelector('#vistaPrevia').setAttribute();
+                })
+            </script>
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
     </div>
