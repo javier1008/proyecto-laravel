@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Candidato;
+use App\Models\Casilla;
+use Barryvdh\DomPDF\Facade\PDF as PDF;
 
 class CandidatoController extends Controller
 {
@@ -143,5 +145,11 @@ class CandidatoController extends Controller
     {
         Candidato::whereId($id)->delete();
         return redirect('candidato');
+    }
+
+    public function generatepdf(){
+        $casillas=Casilla::all();
+        $pdf=PDF::loadView('casilla/list',['casillas'=>$casillas]);
+        return $pdf->dowloand('archivo.pdf');
     }
 }

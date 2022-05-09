@@ -35,3 +35,5 @@ Route::get('/login/facebook/callback', 'App\Http\Controllers\Auth\LoginControlle
 Route::middleware(['auth'])->group (function(){
     Route::resource('voto',VotoController::class);
 });
+
+Route::get('casilla/pdf','CasillaController@generatepdf');
