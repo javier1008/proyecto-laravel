@@ -147,9 +147,9 @@ class CandidatoController extends Controller
         return redirect('candidato');
     }
 
-    public function generatepdf(){
+    /*public function generatepdf(){
         $casillas=Casilla::all();
         $pdf=PDF::loadView('casilla/list',['casillas'=>$casillas]);
         return $pdf->dowloand('archivo.pdf');
-    }
+    }*/
 }
