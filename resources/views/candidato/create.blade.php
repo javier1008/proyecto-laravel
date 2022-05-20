@@ -53,16 +53,13 @@
                 <label for="perfil">Perfil:</label>
                 <input type="file" id="perfil" accept="application/pdf"
                  class="form-control" name="perfil" />
-                 <embed id="vistaPrevia" type="aplication/pdf" width="400" height="400">
+                 
             </div>
-
-            <script>
-                document.querySelector('#perfil').addEventListener('change',() =>{
-                    let perfil = document.querySelector('#perfil').files[0];
-                    let  perfilURL = URL.createObjectURL(perfil);
-                    document.querySelector('#vistaPrevia').setAttribute();
-                })
-            </script>
+            <div class="form-group" id="img-perfil">
+                <iframe src="" frameborder="0" id="vista-pdf"></iframe>
+            
+            </div>
+            
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
     </div>
