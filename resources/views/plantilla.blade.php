@@ -7,7 +7,10 @@
     <title>Elecciones</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/menu.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
+   
 </head>
 <body>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
@@ -27,6 +30,37 @@
             </div>
 
         </div>
+        <nav class="navegacion">
+			<ul class="menu">
+      <li class="nav-menu-item"><a href="../home.php" class="nav-menu-link nav-link"><strong>INICIO</strong></a></li>    
+            <li class="nav-menu-item"><a href="#"class="nav-menu-link nav-link">ALUMNOS</a>
+                <ul class="submenu">
+						<li class="li_class"><a href="#">Registro</a></li>
+						<li class=""><a href="../alumnos/updateAlumno.php">Gestionar</a></li>
+            <li class=""><a href="../alumnos/alumno_consultar.php">Consulta</a></li>
+            <li class=""><a href="../alumnos/xmlAlumno.php">XML</a></li>
+            <li class=""><a href="../alumnos/Json_Alumno.php">JSON</a></li>
+					</ul>
+                </li>
+				<li class="nav-menu-item"><a href="#" class="nav-menu-link nav-link">DOCENTES</a>
+                <ul class="submenu">
+						<li><a href="../docentes/docente_agregar.php" >Registro</a></li>
+						<li><a href="../docentes/updateDocente.php">Gestionar</a></li>
+            <li><a href="../docentes/consultaDocente.php">Consulta</a></li>
+            <li><a href="../docentes/xmlDocente.php">XML</a></li>
+            <li><a href="../docentes/jsonDocente.php">JSON</a></li>
+					</ul>
+                </li>
+				<li class="nav-menu-item"><a href="#" class="nav-menu-link nav-link">CURSOS</a>
+					<ul class="submenu">
+						<li><a href="../cursos/consultaHtml5.php">HTML5</a></li>
+						<li><a href="../cursos/consultaCSS.php">CSS</a></li>
+						<li><a href="../cursos/consultaJavascript.php">JavaScript</a></li>
+					</ul>
+				</li> 
+                <li class="nav-menu-item"><a href="../index.html" class="nav-menu-link nav-link"><strong>SALIR</strong></a></li>
+			</ul>
+		</nav>
     </header>
     <div class="container">
         @yield('content')

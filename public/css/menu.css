@@ -1,0 +1,177 @@
+
+/*.navegacion{
+	width: 1000px;
+	margin: 30px auto;
+	background: rgb(3, 3, 3);
+}*/
+nav{
+    background-color: rgba(43, 43, 44, 0.626);
+}
+.menu .nav-menu-item{
+    padding: 15px;
+	position: relative;
+	display: inline-block;
+    font-size: 18px;
+    margin: 0 5PX;/*ABAJO IZQ-DER*/
+    line-height: 50PX; /*cENTRAR DE MANERA VERTICAL*/
+    text-transform: uppercase;/*Cambio a mayusculas*/
+    /*width: max-content;/*Para no cortar las letras cuando ya no alcance a mostrarse las palabras de la barra de navegación*/ 
+}
+
+
+.menu > li > a{
+    font-family: sans-serif;
+	color: rgb(248, 248, 248);
+	text-decoration: none;
+    border-radius: 5px;
+    padding: 30px 20px;
+}
+
+.li .li_class{
+padding: 0;
+}
+
+.menu li a:hover{
+    
+    color: rgb(255, 255, 255);
+    transition: 0.5s;    
+}
+
+/* Submenu*/
+
+.submenu{
+	position: absolute;
+	background: rgb(2, 38, 68);
+    width: 180px;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 1s;
+    list-style: none;
+    line-height: 50px;
+}
+ul .submenu{
+    margin: 0px 0px;
+    padding: 0px;
+}
+.submenu li:hover{
+    background-color: white;
+    color: rgb(2, 38, 68) ;
+
+}
+.submenu li a{
+    border: 30px 40px;
+    padding: 8px;
+	color: #fff;
+	font-family: 'Open sans';
+	text-decoration: none;
+    list-style: none;
+}
+
+.menu li:hover .submenu{
+	visibility: visible;
+	opacity: 1;
+}
+/*------------------------------------------*/
+.componerSalto{/*Clase para limipiar el estilo*/
+    clear:both;
+    }
+.img1{
+    width: 300px;
+    height: 250px;
+}
+.padre {
+    margin: 200px;
+    height: 400px;
+    /*IMPORTANTE*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hijo {
+    width: 800px;
+    text-align: center;
+  }
+  .padre .hijo h1{
+      color: rgb(0, 2, 122);
+      margin: 15px;
+  }
+  .padre .hijo p{
+    font-size: 20px;
+  }
+  /*-----Estilos de las cajas de texto*/
+  .input{
+	width: 20%;
+	border-radius: 7px;
+	padding: 5px 10px;
+	box-sizing: border-box;
+	transition-duration: 0.4s;
+	border:1px solid;
+}
+#semestre{
+	width: 10%;
+	border-radius: 7px;
+	padding: 5px 10px;
+	box-sizing: border-box;
+	transition-duration: 0.4s;
+	border:1px solid;
+    margin: 7px 15px;
+}
+#grupo{
+	width: 7%;
+	border-radius: 7px;
+	padding: 5px 10px;
+    margin: 8px 15px;
+	box-sizing: border-box;
+	transition-duration: 0.4s;
+	border:1px solid;
+}
+#curso{
+	width: 15%;
+	border-radius: 7px;
+	padding: 5px 10px;
+    margin: 8px 15px;
+	box-sizing: border-box;
+	transition-duration: 0.4s;
+	border:1px solid;
+}
+/*Sección del JQUERY*/
+p.note {
+    font-size: 1rem;
+    color: rgb(248, 248, 248);
+  }
+  /*
+  input {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 4px;
+    font-family: 'Lato';
+    width: 300px;
+    margin-top: 10px;
+  }
+  */
+  label {
+    width: 300px;
+    /*font-weight: bold;*/
+    /*display: inline-block;*/
+    margin-top: 20px;
+  }
+  
+  label span {
+    font-size: 1rem;
+  }
+  
+  label.error {
+      color: rgb(189, 0, 0);
+      /*font-size: 1rem;*/
+      font-size: 15px;
+      display: block;
+      margin-top: 0px;
+      padding: 0px;
+  }
+  
+  input.error {
+      border: 1px solid rgb(170, 0, 255);
+      font-weight: 10;
+      color: rgb(0, 0, 0);
+  }
