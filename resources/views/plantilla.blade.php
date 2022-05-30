@@ -17,6 +17,42 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
   
     <header>
+    <nav class="navegacion">
+			<ul class="menu">
+          
+            <li class="nav-menu-item"><a href="#"class="nav-menu-link nav-link">Candidato</a>
+                <ul class="submenu">
+						<li class="li_class"><a href="/candidato/create">Create</a></li>
+						<li class=""><a href="/candidato">List</a></li>
+            
+					</ul>
+                </li>
+				<li class="nav-menu-item"><a href="#" class="nav-menu-link nav-link">Casilla</a>
+                <ul class="submenu">
+						<li><a href="../docentes/docente_agregar.php" >Registro</a></li>
+						<li><a href="../docentes/updateDocente.php">Gestionar</a></li>
+            <li><a href="../docentes/consultaDocente.php">Consulta</a></li>
+            <li><a href="../docentes/xmlDocente.php">XML</a></li>
+            <li><a href="../docentes/jsonDocente.php">JSON</a></li>
+					</ul>
+                </li>
+				<li class="nav-menu-item"><a href="#" class="nav-menu-link nav-link">Elección</a>
+					<ul class="submenu">
+						<li><a href="../cursos/consultaHtml5.php">HTML5</a></li>
+						<li><a href="../cursos/consultaCSS.php">CSS</a></li>
+						<li><a href="../cursos/consultaJavascript.php">JavaScript</a></li>
+					</ul>
+				</li> 
+                <li class="nav-menu-item"><a href="#" class="nav-menu-link nav-link">Voto</a>
+					<ul class="submenu">
+						<li><a href="../cursos/consultaHtml5.php">HTML5</a></li>
+						<li><a href="../cursos/consultaCSS.php">CSS</a></li>
+						<li><a href="../cursos/consultaJavascript.php">JavaScript</a></li>
+					</ul>
+				</li> 
+                <li class="nav-menu-item"><a href="../index.html" class="nav-menu-link nav-link"><strong>SALIR</strong></a></li>
+			</ul>
+		</nav>
         <div class="row">
             <div class="col-md-2">
                 <img src="https://tecmonclova.com/sitio/wp-content/uploads/2019/08/cropped-iconoweb.png" width="200px">
@@ -30,37 +66,7 @@
             </div>
 
         </div>
-        <nav class="navegacion">
-			<ul class="menu">
-      <li class="nav-menu-item"><a href="../home.php" class="nav-menu-link nav-link"><strong>INICIO</strong></a></li>    
-            <li class="nav-menu-item"><a href="#"class="nav-menu-link nav-link">ALUMNOS</a>
-                <ul class="submenu">
-						<li class="li_class"><a href="#">Registro</a></li>
-						<li class=""><a href="../alumnos/updateAlumno.php">Gestionar</a></li>
-            <li class=""><a href="../alumnos/alumno_consultar.php">Consulta</a></li>
-            <li class=""><a href="../alumnos/xmlAlumno.php">XML</a></li>
-            <li class=""><a href="../alumnos/Json_Alumno.php">JSON</a></li>
-					</ul>
-                </li>
-				<li class="nav-menu-item"><a href="#" class="nav-menu-link nav-link">DOCENTES</a>
-                <ul class="submenu">
-						<li><a href="../docentes/docente_agregar.php" >Registro</a></li>
-						<li><a href="../docentes/updateDocente.php">Gestionar</a></li>
-            <li><a href="../docentes/consultaDocente.php">Consulta</a></li>
-            <li><a href="../docentes/xmlDocente.php">XML</a></li>
-            <li><a href="../docentes/jsonDocente.php">JSON</a></li>
-					</ul>
-                </li>
-				<li class="nav-menu-item"><a href="#" class="nav-menu-link nav-link">CURSOS</a>
-					<ul class="submenu">
-						<li><a href="../cursos/consultaHtml5.php">HTML5</a></li>
-						<li><a href="../cursos/consultaCSS.php">CSS</a></li>
-						<li><a href="../cursos/consultaJavascript.php">JavaScript</a></li>
-					</ul>
-				</li> 
-                <li class="nav-menu-item"><a href="../index.html" class="nav-menu-link nav-link"><strong>SALIR</strong></a></li>
-			</ul>
-		</nav>
+        
     </header>
     <div class="container">
         @yield('content')
