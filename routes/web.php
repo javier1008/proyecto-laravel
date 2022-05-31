@@ -29,12 +29,13 @@ Route::resource('candidato',CandidatoController::class);
 Route::resource('eleccion',EleccionController::class);
 Route::resource('voto', VotoController::class);
 
-Route::get('/login','App\Http\Controllers\Auth\LoginController@index');
+Route::get('/login','App\Http\Controllers\Auth\LoginController@index')->name('login');
 Route::get('/login/facebook','App\Http\Controllers\Auth\LoginController@redirectToFacebookProvider');
 Route::get('/login/facebook/callback', 'App\Http\Controllers\Auth\LoginController@handleProviderFacebookCallback');
 Route::get('preview',[PDFController::class,'preview']);
 Route::get('download',[PDFController::class,'download'])->name('download');
+Route::get('logout',[LoginController::class, 'logout']);
 Route::middleware(['auth'])->group (function(){
-    Route::resource('voto',VotoController::class);
+    //Route::resource('voto',VotoController::class);
 });
 

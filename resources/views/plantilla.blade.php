@@ -29,28 +29,28 @@
                 </li>
 				<li class="nav-menu-item"><a href="#" class="nav-menu-link nav-link">Casilla</a>
                 <ul class="submenu">
-						<li><a href="../docentes/docente_agregar.php" >Registro</a></li>
-						<li><a href="../docentes/updateDocente.php">Gestionar</a></li>
-            <li><a href="../docentes/consultaDocente.php">Consulta</a></li>
-            <li><a href="../docentes/xmlDocente.php">XML</a></li>
-            <li><a href="../docentes/jsonDocente.php">JSON</a></li>
+						<li><a href="/casilla/create" >Create</a></li>
+						<li><a href="/casilla">List</a></li>
+                        <li><a href="/casilla/pdf">Download-PDF</a></li>
+            
 					</ul>
                 </li>
 				<li class="nav-menu-item"><a href="#" class="nav-menu-link nav-link">Elección</a>
 					<ul class="submenu">
-						<li><a href="../cursos/consultaHtml5.php">HTML5</a></li>
-						<li><a href="../cursos/consultaCSS.php">CSS</a></li>
-						<li><a href="../cursos/consultaJavascript.php">JavaScript</a></li>
+						<li><a href="/eleccion/create">Create</a></li>
+						<li><a href="/eleccion">List</a></li>
+						
 					</ul>
 				</li> 
                 <li class="nav-menu-item"><a href="#" class="nav-menu-link nav-link">Voto</a>
 					<ul class="submenu">
-						<li><a href="../cursos/consultaHtml5.php">HTML5</a></li>
-						<li><a href="../cursos/consultaCSS.php">CSS</a></li>
-						<li><a href="../cursos/consultaJavascript.php">JavaScript</a></li>
+						<li><a href="/voto/create">Create</a></li>
+						<li><a href="/voto">List</a></li>
+						
 					</ul>
 				</li> 
-                <li class="nav-menu-item"><a href="../index.html" class="nav-menu-link nav-link"><strong>SALIR</strong></a></li>
+                <li class="nav-menu-item"><a href="/preview" class="nav-menu-link nav-link"><strong>Grafica</strong></a></li>
+                <li class="nav-menu-item"><a href="/logout" class="nav-menu-link nav-link"><strong>EXIT</strong></a></li>
 			</ul>
 		</nav>
         <div class="row">

@@ -38,8 +38,8 @@
         data.addColumn('string', 'Pizza');
         data.addColumn('number', 'Populartiy');
         data.addRows([
-            ['Laravel', 33],
-            ['Codeigniter', 26],
+            ['Laravel', 30],
+            ['Codeigniter', 23],
             ['Symfony', 22],
             ['CakePHP', 10],
             ['Slim', 9]
